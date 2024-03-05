@@ -15,8 +15,8 @@ add_executable(statDistrib statDistrib.cpp)
 add_executable(benchmark-example benchmark-example.cpp)
 target_link_libraries(benchmark-example benchmark)
 
-add_executable(bench bench.cpp)
-target_link_libraries(bench benchmark)
+add_executable(benchGenerator benchGenerator.cpp)
+target_link_libraries(benchGenerator benchmark)
 
 ### Fin du TP
 #add_executable(test-test01 test-test01.cpp)
