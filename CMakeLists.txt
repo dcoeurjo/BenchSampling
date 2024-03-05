@@ -24,5 +24,6 @@ target_link_libraries(benchGenerator benchmark)
 #target_link_directories(test-test01 PRIVATE "${PROJECT_SOURCE_DIR}/testU01/local/lib")
 #target_link_libraries(test-test01  PRIVATE libtestU01.a libprobdist.a libmylib.a)
 
-
 add_executable(test-timer test-timer.cpp)
+
+add_executable(whitenoise whitenoise.cpp)
