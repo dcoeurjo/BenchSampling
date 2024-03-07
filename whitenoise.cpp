@@ -6,6 +6,7 @@
 #include <string>
 #include <random>
 
+#include "CLI11.hpp"
 
 using Sample = std::array<double,2>;
 using Pointset = std::vector<Sample>;
@@ -18,6 +19,12 @@ void exportPointset(const Pointset &P, const std::string & filename)
     ofs << s[0]<<" "<<s[1]<<std::endl;
   
   ofs.close();
+}
+
+double computeDiskIntegrationError(const Pointset &P)
+{
+  //.. do something
+  return 0.0;
 }
 
 
@@ -35,10 +42,26 @@ Pointset whitenoise2D(size_t N, size_t seed = 12345)
 
 int main(int argc, char ** argv)
 {
+  CLI::App app{"whitenoise"};
   
-  Pointset WN = whitenoise2D(1024);
+  //Params
+  int nbSPP = 1024;
+  app.add_option("-n,--nbSpp", nbSPP, "Number of samples");
+  std::string outputPTS="out_" + std::to_string(nbSPP)+".pts";
+  app.add_option("-o,--outpout", outputPTS, "Output file (ascii format)");
+  size_t seed;
+  app.add_option("--seed", seed, "Seed");
+  bool integrationOnly=false;
+  app.add_flag("--integrationOnly",integrationOnly,"Only computes the integration");
+  CLI11_PARSE(app, argc, argv);
+
   
-  exportPointset(WN, "WN-1024.pts");
+  Pointset WN = whitenoise2D(nbSPP,seed);
+  
+  if (integrationOnly)
+    std::cout<<computeDiskIntegrationError(WN)<<std::endl;
+  else
+    exportPointset(WN, outputPTS);
   
   return 0;
 }
