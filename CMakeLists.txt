@@ -28,5 +28,6 @@ add_executable(test-timer test-timer.cpp)
 
 add_executable(whitenoise whitenoise.cpp)
 
+add_executable(pts2svg pts2svg.cpp)
 
-add_executable(gbn gbn.cpp)
+
