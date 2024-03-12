@@ -48,7 +48,7 @@ int main(int argc, char ** argv)
   int nbSPP = 1024;
   app.add_option("-n,--nbSpp", nbSPP, "Number of samples");
   std::string outputPTS="out_" + std::to_string(nbSPP)+".pts";
-  app.add_option("-o,--outpout", outputPTS, "Output file (ascii format)");
+  app.add_option("-o,--output", outputPTS, "Output file (ascii format)");
   size_t seed;
   app.add_option("--seed", seed, "Seed");
   bool integrationOnly=false;
